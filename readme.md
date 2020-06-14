@@ -1,6 +1,6 @@
 # GoResize
 
-Goresize is a small and simple script to resize all images inside a folder, including subfolder. 
+Goresize is a small and simple script to resize all images inside a folder, including subfolders. 
 
 ## Usage
 
@@ -35,8 +35,9 @@ For JPG images, the ratio will be converted to the PNG compression level of the 
 | 60 - 79 | BestSpeed          |
 | 0 - 60  | BestCompression    |
 
-
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
+
+Based on the package [Imaging](https://github.com/disintegration/imaging)
