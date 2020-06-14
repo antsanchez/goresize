@@ -27,7 +27,7 @@ Image quality argumentw will be applied only to images of type JPG or PNG.
 
 For JPG images, the indicated ratio will be applied. 
 
-For JPG images, the ratio will be converted to the PNG compression level of the (image/png)[https://golang.org/pkg/image/png/#CompressionLevel] go package, as follows:
+For JPG images, the ratio will be converted to the PNG compression level of the [image/png](https://golang.org/pkg/image/png/#CompressionLevel) Go package, as follows:
 
 | 100     | NoCompression      |
 |---------|--------------------|
@@ -36,7 +36,7 @@ For JPG images, the ratio will be converted to the PNG compression level of the 
 | 0 - 60  | BestCompression    |
 
 
-## Contributåing
+## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
