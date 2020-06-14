@@ -1,6 +1,6 @@
 # GoResize
 
-Goresize is an small and simple script to resize all images inside a folder, including subfolder. 
+Goresize is a small and simple script to resize all images inside a folder, including subfolder. 
 
 ## Usage
 
