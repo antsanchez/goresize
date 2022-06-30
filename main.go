@@ -22,16 +22,13 @@ var validFormats = []string{
 }
 
 func main() {
-
-	var dir = flag.String("d", ".", "Directory where to resize images")
-	var width = flag.Int("w", 1224, "Desired image width, in pixels. Setting it to 0 will keep the ratio.")
-	var height = flag.Int("h", 0, "Desired image height, in pixels. Setting it to 0 will keep the ratio.")
-	var quality = flag.Int("q", 80, "Desired image quality, from 0 to 100 (lower to better)")
-
+	dir := flag.String("d", ".", "Directory where to resize images")
+	width := flag.Int("w", 1224, "Desired image width, in pixels. Setting it to 0 will keep the ratio.")
+	height := flag.Int("h", 0, "Desired image height, in pixels. Setting it to 0 will keep the ratio.")
+	quality := flag.Int("q", 80, "Desired image quality, from 0 to 100 (lower to better)")
 	flag.Parse()
 
 	var files []string
-
 	err := filepath.Walk(*dir, func(path string, info os.FileInfo, err error) error {
 		files = append(files, path)
 		return nil
@@ -49,7 +46,6 @@ func main() {
 
 // hasValidFormat check if the file has an accepted format and also returns the MIME type
 func hasValidFormat(fileName string) (valid bool, mime string) {
-
 	fileMIME, err := getImageMIME(fileName)
 	if err != nil {
 		return false, ""
@@ -66,7 +62,6 @@ func hasValidFormat(fileName string) (valid bool, mime string) {
 
 // resizeImage will resize the filename to de desired width and quality
 func resizeImage(fileName string, width int, height int, quality int, mime string) {
-
 	src, err := imaging.Open(fileName)
 	if err != nil {
 		log.Fatalf("failed to open image: %v", err)
@@ -83,11 +78,9 @@ func resizeImage(fileName string, width int, height int, quality int, mime strin
 
 	switch mime {
 	case "image/jpeg", "image/jpg":
-
 		err = imaging.Save(src, fileName, imaging.JPEGQuality(quality))
 
 	case "image/png":
-
 		compression := png.NoCompression
 		if quality > 80 && quality < 100 {
 			compression = png.DefaultCompression
@@ -100,7 +93,6 @@ func resizeImage(fileName string, width int, height int, quality int, mime strin
 		err = imaging.Save(src, fileName, imaging.PNGCompressionLevel(compression))
 
 	default:
-
 		err = imaging.Save(src, fileName)
 	}
 
@@ -109,12 +101,10 @@ func resizeImage(fileName string, width int, height int, quality int, mime strin
 	}
 
 	fmt.Printf("File %s (%s) was modified\n", fileName, mime)
-
 }
 
 // getImageMIME returns the MIME type of the file
 func getImageMIME(fileName string) (mime string, err error) {
-
 	buf, err := ioutil.ReadFile(fileName)
 	if err != nil {
 		return "", err
